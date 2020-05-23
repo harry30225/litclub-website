@@ -15,7 +15,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <div>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-            <Link className="nav-link" to="/"  >
+            <Link className="nav-link" to="/events"  >
             <i className="fa fa-tag"/>{' '}
 
             Events     
