@@ -22,7 +22,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
             </Link>                         
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="/"  >
+            <Link className="nav-link" to="/blogs"  >
             <i className="fa fa-tag"/>{' '}
 
             Blogs     
