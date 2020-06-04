@@ -7,6 +7,7 @@ import AdminLogin from './components/auth/AdminLogin';
 import Dashboard from './components/admin/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Events from './components/Events/Events';
+import Blogs from './components/Blogs/Blogs';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -39,6 +40,7 @@ const  App=()=>{
         <Route exact path="/" component={Landing} />
         <Route exact path="/admin/login" component={AdminLogin} />
         <Route exact path="/events" component={Events} />
+        <Route exact path="/blogs" component={Blogs} />
         <PrivateRoute exact path="/admin/dashboard" component={Dashboard} />
       </Switch>
     </section>
