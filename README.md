@@ -17,5 +17,7 @@ npm start
 
 ## Features till now
 1. /events -> to view all events
-2. /admin/login -> to login the admin(username=admin and password= admin)
-3. /admin/dashboard -> to add event
+2. /blogs -> to view all blogs
+3. /admin/login -> to login the admin(username=admin and password= admin)
+4. /admin/addevent -> to add event
+5. /admin/addblog -> to add blog
