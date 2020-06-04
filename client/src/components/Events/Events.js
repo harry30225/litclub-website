@@ -14,7 +14,7 @@ const Events = ({ getEvents, event: { events, loading }}) => {
     return !loading && (
         <div>
         {events.map(event => (
-          <EventElement name={event.name} date={event.date} description={event.description} venue={event.venue}  key={event._id} />
+          <EventElement name={event.name} date={event.date} description={event.description} venue={event.venue} eventdate={event.eventdate}  key={event._id} />
         ))}
         </div>
     )
