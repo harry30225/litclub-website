@@ -1,6 +1,7 @@
 import {
     GET_BLOGS,
     BLOGS_ERROR,
+    ADD_BLOG
 } from '../actions/types';
   
 const initialState = {
@@ -20,6 +21,12 @@ export default function(state = initialState, action) {
             blogs: payload,
             loading: false
         };
+        case ADD_BLOG:
+        return {
+            ...state,
+            blogs: [payload, ...state.blogs],
+            loading: false
+        };        
         case BLOGS_ERROR:
             return {
               ...state,

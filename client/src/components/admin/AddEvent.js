@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addEvent } from "../../actions/event";
 
-const Dashboard = ({ addEvent }) => {
+const AddEvent = ({ addEvent }) => {
   const [formData, setFormData] = useState({
     name: "",
     venue: "",
@@ -72,8 +72,8 @@ const Dashboard = ({ addEvent }) => {
     </Fragment>
   );
 };
-Dashboard.propTypes = {
+AddEvent.propTypes = {
   addEvent: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addEvent })(Dashboard);
+export default connect(null, { addEvent })(AddEvent);

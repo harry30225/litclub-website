@@ -11,3 +11,5 @@ export const ADD_EVENT = 'ADD_EVENT';
 
 export const GET_BLOGS = 'GET_BLOGS';
 export const BLOGS_ERROR = 'BLOGS_ERROR';
+
+export const ADD_BLOG = 'ADD_BLOG';

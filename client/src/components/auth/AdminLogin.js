@@ -23,7 +23,7 @@ const AdminLogin = ({login,isAuthenticated}) => {
             login(username, password);
         };
     if (isAuthenticated) {
-            return <Redirect to='/admin/dashboard' />;
+            return <Redirect to='/admin/addevent' />;
         };
     return (
         <Fragment> 
