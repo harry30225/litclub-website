@@ -1,30 +1,40 @@
 import React from 'react';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
+
 
 const EventElement = (props) => {
-    const {name,date,venue,description,eventdate} = props
+    const { name, date, venue, description, eventdate } = props
     return (
-        <div className="card mb-3">
-        <div className="card-header">
-            <h5>{name}
-            </h5>
+        <div className="main">
+            <div className="card card-body mb-2">
+                <div className="row">
+                    <div className="col-lg-6">
+                        <div className="ha-pic">
+                            <img src="img/recentEventPoster.jpg" alt="" />
+                        </div>
+                    </div>
+                    <div className="col-lg-6">
+                        <div className="ha-text">
+                            <h2>{name}</h2>
+                            <p>{description}</p>
+                            <ul>
+                                <li><span className="icon_check"></span> {venue}</li>
+                                <li>
+                                    <span className="icon_check"></span>
+                                    <Moment parse="YYYY-MM-DD" format="YYYY/MM/DD" > {eventdate}
+                                    </Moment>
+                                </li>
+                            </ul>
+                            <Link to="#" className="ha-btn">Discover Now</Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="card-body">
-            <h6 className="card-text">{venue}</h6>
-            <h6>Post date : 
-            <Moment parse="YYYY-MM-DD" format="YYYY/MM/DD"> {date}
-            </Moment></h6> 
-            <h6>Event date : 
-            <Moment parse="YYYY-MM-DD" format="YYYY/MM/DD"> {eventdate}
-            </Moment></h6> 
-        </div>
-        <div className="card-body">
-            <p className="card-text"> {description}</p>
-        </div>
-    </div>
     )
 };
 
 
-  
+
 export default EventElement;
