@@ -1,4 +1,4 @@
-import React,{Fragment,useEffect} from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/layout/Navbar';
@@ -16,7 +16,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Redux
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -27,29 +27,30 @@ if (localStorage.token) {
 
 
 
-const  App=()=>{
+const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
 
 
-  return(
-  <Provider store={store}>
-  <Router>
-  <Fragment>
-    <Navbar />
-    <section className="container">
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/admin/login" component={AdminLogin} />
-        <Route exact path="/events" component={Events} />
-        <Route exact path="/blogs" component={Blogs} />
-        <PrivateRoute exact path="/admin/addevent" component={AddEvent} />
-        <PrivateRoute exact path="/admin/addblog" component={AddBlog} />
-      </Switch>
-    </section>
-  </Fragment>
-  </Router>
-  </Provider>
-)};
+  return (
+    <Provider store={store}>
+      <Router>
+        <Fragment>
+          <Navbar />
+          <section className="container">
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/admin/login" component={AdminLogin} />
+              <Route exact path="/events" component={Events} />
+              <Route exact path="/blogs" component={Blogs} />
+              <PrivateRoute exact path="/admin/addevent" component={AddEvent} />
+              <PrivateRoute exact path="/admin/addblog" component={AddBlog} />
+            </Switch>
+          </section>
+        </Fragment>
+      </Router>
+    </Provider>
+  )
+};
 export default App;
