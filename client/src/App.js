@@ -12,8 +12,7 @@ import AddEvent from './components/admin/AddEvent';
 import AddBlog from './components/admin/AddBlog';
 
 
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 // Redux
 import { Provider } from 'react-redux';
