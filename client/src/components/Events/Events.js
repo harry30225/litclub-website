@@ -14,13 +14,13 @@ const Events = ({ getEvents, event: { events, loading } }) => {
 
   return !loading && (
     <div>
-      <section class="breadcrumb-section">
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-12">
-                      <div class="breadcrumb-text">
+      <section className="breadcrumb-section">
+          <div className="container">
+              <div className="row">
+                  <div className="col-lg-12">
+                      <div className="breadcrumb-text">
                           <h2>Our Events</h2>
-                          <div class="bt-option">
+                          <div className="bt-option">
                               <Link to="/">Home</Link>
                               <span>Events</span>
                           </div>
