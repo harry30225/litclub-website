@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -20,13 +20,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                             <li><Link to="/blogs">Blogs</Link></li>
                             <li><Link to="/events">Events</Link></li>
                             {!loading && isAuthenticated && (
-                                <li>
-                                    <Link onClick={logout} to='/'>
-                                        Logout
-                     </Link>
-                                </li>
-                            )}
-                            <li><Link to="/admin/login">Login</Link></li>
+                                <Fragment>
+                                    <li><Link to='/admin/addevent'>Add Event</Link></li>
+                                    <li><Link to='/admin/addblog'>Add Blog</Link></li>
+                                    <li><Link onClick={logout} to='/'>Logout</Link></li>
+                                </Fragment>
+                                )
+                            }
+                            
                         </ul>
                     </nav>
                 </div>
