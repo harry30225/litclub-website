@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_EVENTS, EVENTS_ERROR, ADD_EVENT } from "./types";
+import { GET_EVENTS, EVENTS_ERROR, ADD_EVENT,DELETE_EVENT } from "./types";
 
 // Get events
 export const getEvents = () => async (dispatch) => {
@@ -39,6 +39,24 @@ export const addEvent = (name, venue, description, eventdate) => async (
     dispatch({
       type: EVENTS_ERROR,
       payload: { msg: "error" },
+    });
+  }
+};
+
+
+// delete events
+export const deleteEvent = (id) => async dispatch => {
+  try {
+    await axios.delete(`/api/event/delete/${id}`);
+
+    dispatch({
+      type: DELETE_EVENT,
+      payload: id
+    });
+  } catch (err) {
+    dispatch({
+      type: EVENTS_ERROR,
+      payload: { msg: "error" }
     });
   }
 };

@@ -30,7 +30,7 @@ const Events = ({ getEvents, event: { events, loading } }) => {
           </div>
       </section>
       {events.map(event => (
-        <EventElement name={event.name} date={event.date} description={event.description} venue={event.venue} eventdate={event.eventdate} key={event._id} />
+        <EventElement name={event.name} date={event.date} description={event.description} venue={event.venue} eventdate={event.eventdate} key={event._id} id={event._id} />
       ))}
     </div>
   )

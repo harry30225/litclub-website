@@ -1,7 +1,8 @@
 import {
     GET_EVENTS,
     EVENTS_ERROR,
-    ADD_EVENT
+    ADD_EVENT,
+    DELETE_EVENT
 } from '../actions/types';
   
 const initialState = {
@@ -33,6 +34,12 @@ export default function(state = initialState, action) {
               error: payload,
               loading: false
         };
+        case DELETE_EVENT:
+        return {
+            ...state,
+            events: state.events.filter(event => event._id !== payload),
+            loading: false
+        };        
         default:
         return state;
     }

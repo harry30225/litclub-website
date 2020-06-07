@@ -59,4 +59,31 @@ router.get("/", async (req, res) => {
   }
 });
 
+// @route    GET api/event/delete/:id
+// @desc     delete event by admin
+// @access   private
+
+router.delete('/delete/:id',auth,
+async (req,res)=>{
+
+    try {
+        const event = await Event.findById(req.params.id);
+
+        // Check for ObjectId format and post
+        if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !event) {
+          return res.status(404).json({ msg: 'event not found' });
+        }
+
+        await event.remove();
+  
+        res.json({ msg: 'Event removed' });
+    
+
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+      }
+
+});
+
 module.exports = router;
