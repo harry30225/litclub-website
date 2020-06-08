@@ -11,7 +11,7 @@ const EventElement = (props) => {
         <div className="main">
             <div className="card card-body mb-2">
                 <div className="row">
-                    <div className="col-lg-6">
+                    <div className="col-lg-5">
                         <div className="ha-pic">
                             <img src="img/recentEventPoster.jpg" alt="" />
                         </div>
@@ -32,10 +32,13 @@ const EventElement = (props) => {
                         </div>
                     </div>
                     {isAuthenticated&&(
-                        <div className="col-lg-1" >
+                        <div className="col-lg-2" >
                             <button style={{ cursor: 'pointer', float: 'right', color: 'red' }} onClick={e=>deleteEvent(id)} className="btn btn-light btn-lg">
                                 <i className="fa fa-trash"/>
                             </button>
+                            <Link style={{ cursor: 'pointer', float: 'right', color: 'black' }} to={`/admin/editevent/${id}`} className="btn btn-light btn-lg">
+                                <i className="fa fa-pencil"/>
+                            </Link>
                         </div>
                     )}
                 </div>

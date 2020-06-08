@@ -2,7 +2,9 @@ import {
     GET_EVENTS,
     EVENTS_ERROR,
     ADD_EVENT,
-    DELETE_EVENT
+    DELETE_EVENT,
+    EDIT_EVENT,
+    GET_EVENT
 } from '../actions/types';
   
 const initialState = {
@@ -39,7 +41,19 @@ export default function(state = initialState, action) {
             ...state,
             events: state.events.filter(event => event._id !== payload),
             loading: false
-        };        
+        };
+        case EDIT_EVENT:
+        return {
+            ...state,
+            events: state.events.map(event => event._id === payload._id ? payload :event),
+            loading: false
+        };
+        case GET_EVENT:
+        return {
+            ...state,
+            event: payload,
+            loading: false
+        };                          
         default:
         return state;
     }
