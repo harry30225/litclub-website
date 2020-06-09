@@ -3,17 +3,17 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {deleteEvent} from '../../actions/event'
+import { deleteEvent } from '../../actions/event'
 
 const EventElement = (props) => {
-    const {deleteEvent, name, date, venue, description, eventdate , auth: { isAuthenticated} ,id } = props
+    const { deleteEvent, name, date, venue, description, eventdate, auth: { isAuthenticated }, id } = props
     return (
         <div className="main">
             <div className="card card-body mb-2">
                 <div className="row">
                     <div className="col-lg-5">
                         <div className="ha-pic">
-                            <img src="img/recentEventPoster.jpg" alt="" />
+                            <img src="/img/recentEventPoster.jpg" alt="" />
                         </div>
                     </div>
                     <div className="col-lg-5">
@@ -31,13 +31,13 @@ const EventElement = (props) => {
                             <Link to="#" className="ha-btn">Discover Now</Link>
                         </div>
                     </div>
-                    {isAuthenticated&&(
+                    {isAuthenticated && (
                         <div className="col-lg-2" >
-                            <button style={{ cursor: 'pointer', float: 'right', color: 'red' }} onClick={e=>deleteEvent(id)} className="btn btn-light btn-lg">
-                                <i className="fa fa-trash"/>
+                            <button style={{ cursor: 'pointer', float: 'right', color: 'red' }} onClick={e => deleteEvent(id)} className="btn btn-light btn-lg">
+                                <i className="fa fa-trash" />
                             </button>
                             <Link style={{ cursor: 'pointer', float: 'right', color: 'black' }} to={`/admin/editevent/${id}`} className="btn btn-light btn-lg">
-                                <i className="fa fa-pencil"/>
+                                <i className="fa fa-pencil" />
                             </Link>
                         </div>
                     )}
@@ -57,4 +57,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps,{deleteEvent})(EventElement);
+export default connect(mapStateToProps, { deleteEvent })(EventElement);
