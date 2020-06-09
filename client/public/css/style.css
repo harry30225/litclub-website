@@ -1758,7 +1758,13 @@ ol {
 .load-more.blog-more {
 	padding-top: 20px;
 }
-
+.set_bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+  }
+  
+  
 /*---------------------
   Blog Hero Section
 -----------------------*/
