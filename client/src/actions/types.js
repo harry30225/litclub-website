@@ -13,6 +13,7 @@ export const DELETE_EVENT = 'DELETE_EVENT';
 export const EDIT_EVENT = 'EDIT_EVENT';
 
 export const GET_BLOGS = 'GET_BLOGS';
+export const GET_BLOG = 'GET_BLOG';
 export const BLOGS_ERROR = 'BLOGS_ERROR';
 
 export const ADD_BLOG = 'ADD_BLOG';

@@ -31,7 +31,7 @@ const Blogs = ({ getBlogs, blog: { blogs, loading } }) => {
       </section>
       <div className="row">
         {blogs.map(blog => (
-          <BlogElement title={blog.title} content={blog.content} date={blog.date} key={blog._id} />
+          <BlogElement title={blog.title} content={blog.content} date={blog.date} key={blog._id} id={blog._id}/>
         ))}
       </div>
     </div>

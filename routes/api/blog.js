@@ -126,7 +126,7 @@ router.put(
 );
 
 // @route    GET api/blog/:id
-// @desc     GET blog by admin
+// @desc     GET blog 
 // @access   public
 
 router.get('/:id',

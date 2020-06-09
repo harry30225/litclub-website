@@ -8,6 +8,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 
 import Events from './components/Events/Events';
 import Blogs from './components/Blogs/Blogs';
+import SingleBlog from './components/Blogs/SingleBlog';
 import AddEvent from './components/admin/AddEvent';
 import EditEvent from './components/admin/EditEvent';
 import AddBlog from './components/admin/AddBlog';
@@ -44,6 +45,7 @@ const App = () => {
               <Route exact path="/admin/login" component={AdminLogin} />
               <Route exact path="/events" component={Events} />
               <Route exact path="/blogs" component={Blogs} />
+              <Route exact path="/blog/:id" component={SingleBlog} />
               <PrivateRoute exact path="/admin/addevent" component={AddEvent} />
               <PrivateRoute exact path="/admin/editevent/:id" component={EditEvent} />
               <PrivateRoute exact path="/admin/addblog" component={AddBlog} />
