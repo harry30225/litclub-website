@@ -7,11 +7,13 @@ import { addBlog } from "../../actions/blog";
 
 const AddBlog = ({ addBlog }) => {
   const [formData, setFormData] = useState({
+    blogtag: "",
     title: "",
     content: "",
+    author: "",
   });
 
-  const { title,content } = formData;
+  const { blogtag, title, content, author } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,7 +21,7 @@ const AddBlog = ({ addBlog }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    addBlog(title,content);
+    addBlog(blogtag, title, content, author);
   };
   return (
     <Fragment>
@@ -27,6 +29,14 @@ const AddBlog = ({ addBlog }) => {
         <div className="card-header">ADD BLOG</div>
         <div className="card-body">
           <form onSubmit={(e) => onSubmit(e)}>
+            <FormElement
+              label="Blog Tag"
+              name="blogtag"
+              placeholder="Enter Blog Tag"
+              type="text"
+              value={blogtag}
+              onChange={(e) => onChange(e)}
+            />
             <FormElement
               label="Title"
               name="title"
@@ -41,6 +51,14 @@ const AddBlog = ({ addBlog }) => {
               placeholder="Enter Content"
               type="text"
               value={content}
+              onChange={(e) => onChange(e)}
+            />
+            <FormElement
+              label="Author"
+              name="author"
+              placeholder="Enter Author"
+              type="text"
+              value={author}
               onChange={(e) => onChange(e)}
             />
             <input
