@@ -24,10 +24,16 @@ router.post('/', [auth, [
         try {
             content = "";
             if (req.body.content != null) content = req.body.content;
+            blogtag = "";
+            if (req.body.blogtag != null) blogtag = req.body.blogtag;
+            author = "";
+            if (req.body.author != null) author = req.body.author;
 
             const newBlog = new Blog({
+                blogtag: blogtag,
                 title: req.body.title,
                 content: content,
+                author: author,
             });
 
             const blog = await newBlog.save();
@@ -109,10 +115,15 @@ router.put(
 
             content = "";
             if (req.body.content != null) content = req.body.content;
+            blogtag = "";
+            if (req.body.blogtag != null) blogtag = req.body.blogtag;
+            author = "";
+            if (req.body.author != null) author = req.body.author;
 
             blog.title = req.body.title;
             blog.content = content;
-
+            blog.blogtag = blogtag;
+            blog.author = author;
 
             await blog.save();
 

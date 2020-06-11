@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_BLOGS, BLOGS_ERROR,ADD_BLOG,GET_BLOG } from "./types";
+import { GET_BLOGS, BLOGS_ERROR, ADD_BLOG, GET_BLOG } from "./types";
 
 // Get blogs
 export const getBlogs = () => async (dispatch) => {
@@ -19,7 +19,7 @@ export const getBlogs = () => async (dispatch) => {
 };
 
 // add blogs
-export const addBlog = (title,content) => async (
+export const addBlog = (blogtag, title, content, author) => async (
   dispatch
 ) => {
   const config = {
@@ -27,7 +27,7 @@ export const addBlog = (title,content) => async (
       "Content-Type": "application/json",
     },
   };
-  const body = JSON.stringify({ title,content });
+  const body = JSON.stringify({ blogtag, title, content, author });
   try {
     const res = await axios.post(`/api/blog/`, body, config);
 
