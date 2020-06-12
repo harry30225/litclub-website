@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_BLOGS, BLOGS_ERROR, ADD_BLOG, GET_BLOG } from "./types";
+import { GET_BLOGS, BLOGS_ERROR, ADD_BLOG, GET_BLOG,EDIT_BLOG } from "./types";
 
 // Get blogs
 export const getBlogs = () => async (dispatch) => {
@@ -56,6 +56,31 @@ export const getBlog = (id) => async dispatch => {
     dispatch({
       type: BLOGS_ERROR,
       payload: { msg: "error" }
+    });
+  }
+};
+
+// edit blog
+export const editBlog = (id,blogtag, title, content, author) => async (
+  dispatch
+) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = JSON.stringify({ blogtag, title, content, author });
+  try {
+    const res = await axios.put(`/api/blog/edit/${id}`, body, config);
+
+    dispatch({
+      type: EDIT_BLOG,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: BLOGS_ERROR,
+      payload: { msg: "error" },
     });
   }
 };

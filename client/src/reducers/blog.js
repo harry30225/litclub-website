@@ -2,7 +2,8 @@ import {
     GET_BLOGS,
     BLOGS_ERROR,
     ADD_BLOG,
-    GET_BLOG
+    GET_BLOG,
+    EDIT_BLOG
 } from '../actions/types';
   
 const initialState = {
@@ -34,6 +35,12 @@ export default function(state = initialState, action) {
               error: payload,
               loading: false
         };
+        case EDIT_BLOG:
+        return {
+            ...state,
+            blogs: state.blogs.map(blog => blog._id === payload._id ? payload :blog),
+            loading: false
+        };        
         case GET_BLOG:
         return {
             ...state,

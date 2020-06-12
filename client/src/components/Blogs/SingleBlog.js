@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 
 
 
-const SingleBlog = ({ getBlog, blog: { blog, loading }, match }) => {
+const SingleBlog = ({ getBlog, blog: { blog, loading }, match,auth: { isAuthenticated }}) => {
   useEffect(() => {
     getBlog(match.params.id);
   }, [getBlog, match.params.id]);
@@ -40,6 +40,13 @@ const SingleBlog = ({ getBlog, blog: { blog, loading }, match }) => {
                 </div>
               </div>
             </div>
+            {isAuthenticated && (
+            <div className="col-lg-2 m-auto">
+              <Link style={{ cursor: 'pointer', float: 'right', color: 'black' }} to={`/admin/editblog/${blog._id}`} className="btn btn-light btn-lg">
+                  <i className="fa fa-pencil" />
+              </Link>
+            </div>
+            )}
           </div>
         </div>
       </section>
@@ -48,12 +55,14 @@ const SingleBlog = ({ getBlog, blog: { blog, loading }, match }) => {
 }
 
 SingleBlog.propTypes = {
+  auth: PropTypes.object.isRequired,
   getBlog: PropTypes.func.isRequired,
   blog: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   blog: state.blog,
+  auth: state.auth,
 });
 
 export default connect(
