@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { getBlog } from '../../actions/blog';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
+import { deleteBlog } from '../../actions/blog'
 
 
-
-const SingleBlog = ({ getBlog, blog: { blog, loading }, match,auth: { isAuthenticated }}) => {
+const SingleBlog = ({ deleteBlog, getBlog, blog: { blog, loading }, match, auth: { isAuthenticated } }) => {
   useEffect(() => {
     getBlog(match.params.id);
   }, [getBlog, match.params.id]);
@@ -30,22 +30,25 @@ const SingleBlog = ({ getBlog, blog: { blog, loading }, match,auth: { isAuthenti
           </div>
         </div>
       </section>
-      <section class="blog-details-section">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 m-auto">
-              <div class="bd-text">
-                <div class="bd-title">
+      <section className="blog-details-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8 m-auto">
+              <div className="bd-text">
+                <div className="bd-title">
                   <p> {blog.content} </p>
                 </div>
               </div>
             </div>
             {isAuthenticated && (
-            <div className="col-lg-2 m-auto">
-              <Link style={{ cursor: 'pointer', float: 'right', color: 'black' }} to={`/admin/editblog/${blog._id}`} className="btn btn-light btn-lg">
+              <div className="col-lg-2 m-auto">
+                <button style={{ cursor: 'pointer', float: 'right', color: 'red' }} onClick={e => deleteBlog(blog._id)} className="btn btn-light btn-lg">
+                  <i className="fa fa-trash" />
+                </button>
+                <Link style={{ cursor: 'pointer', float: 'right', color: 'black' }} to={`/admin/editblog/${blog._id}`} className="btn btn-light btn-lg">
                   <i className="fa fa-pencil" />
-              </Link>
-            </div>
+                </Link>
+              </div>
             )}
           </div>
         </div>
@@ -58,6 +61,7 @@ SingleBlog.propTypes = {
   auth: PropTypes.object.isRequired,
   getBlog: PropTypes.func.isRequired,
   blog: PropTypes.object.isRequired,
+  deleteBlog: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -67,5 +71,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getBlog }
+  { getBlog, deleteBlog }
 )(SingleBlog);

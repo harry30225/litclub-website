@@ -39,7 +39,7 @@ export default function (state = initialState, action) {
         case DELETE_BLOG:
             return {
                 ...state,
-                events: state.blogs.filter(blog => blog._id !== payload),
+                blogs: state.blogs.filter(blog => blog._id !== payload),
                 loading: false
             };
         case EDIT_BLOG:

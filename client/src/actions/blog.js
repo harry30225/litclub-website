@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_BLOGS, BLOGS_ERROR, ADD_BLOG, GET_BLOG,EDIT_BLOG } from "./types";
+import { DELETE_BLOG, GET_BLOGS, BLOGS_ERROR, ADD_BLOG, GET_BLOG, EDIT_BLOG } from "./types";
 
 // Get blogs
 export const getBlogs = () => async (dispatch) => {
@@ -61,7 +61,7 @@ export const getBlog = (id) => async dispatch => {
 };
 
 // edit blog
-export const editBlog = (id,blogtag, title, content, author) => async (
+export const editBlog = (id, blogtag, title, content, author) => async (
   dispatch
 ) => {
   const config = {
@@ -81,6 +81,23 @@ export const editBlog = (id,blogtag, title, content, author) => async (
     dispatch({
       type: BLOGS_ERROR,
       payload: { msg: "error" },
+    });
+  }
+};
+
+// delete blog
+export const deleteBlog = (id) => async dispatch => {
+  try {
+    await axios.delete(`/api/blog/delete/${id}`);
+
+    dispatch({
+      type: DELETE_BLOG,
+      payload: id
+    });
+  } catch (err) {
+    dispatch({
+      type: BLOGS_ERROR,
+      payload: { msg: "error" }
     });
   }
 };
