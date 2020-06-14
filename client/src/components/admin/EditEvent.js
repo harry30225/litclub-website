@@ -4,6 +4,8 @@ import FormElement from "../layout/FormElement";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { editEvent,getEvent} from "../../actions/event";
+import FileBase64 from 'react-file-base64';
+
 
 const EditEvent = ({getEvent,editEvent,match,event:{event,loading}}) => {
   useEffect(() => {
@@ -17,7 +19,8 @@ const EditEvent = ({getEvent,editEvent,match,event:{event,loading}}) => {
         name:event.name,
         venue:event.venue,
         description:event.description,
-        eventdate:date.getFullYear()+"-"+months[date.getMonth()]+"-"+date.getDate()
+        eventdate:date.getFullYear()+"-"+months[date.getMonth()]+"-"+date.getDate(),
+        picture:event.picture
       })
     }
 }, [getEvent,loading,event&&event._id]);
@@ -29,16 +32,24 @@ const EditEvent = ({getEvent,editEvent,match,event:{event,loading}}) => {
     eventdate: "",
   });
 
-  const { name, venue, description, eventdate } = formData;
+  const { name, venue, description, eventdate,picture} = formData;
 
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const onDone=(uploadimage)=>{
+    console.log(uploadimage);
+    setFormData({...formData,picture:{
+      name:"base-image-"+Date.now(),
+      data:uploadimage.base64.toString()
+    }});
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    editEvent(match.params.id,name, venue, description, eventdate);
+    editEvent(match.params.id,name, venue, description, eventdate,picture);
   };
   return !loading && event !== null &&(
     <Fragment>
@@ -78,6 +89,11 @@ const EditEvent = ({getEvent,editEvent,match,event:{event,loading}}) => {
               value={eventdate}
               onChange={(e) => onChange(e)}
             />
+            <FileBase64
+              multiple={ false }
+              onDone={ (uploadimage)=> onDone(uploadimage)}
+            />
+            {picture && <img src={picture.data}/>}
             <input
               type="submit"
               value="Edit Event"

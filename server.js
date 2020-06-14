@@ -9,7 +9,8 @@ const app = express();
 connectDB();
 
 // init middleware
-app.use(express.json({extended : false}));
+app.use(express.json({limit: '1mb',extended:false}));
+app.use(express.urlencoded({limit: '1mb'}));
 
 app.get('/',(req,res)=> res.send('API RUNNING'));
 

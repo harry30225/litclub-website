@@ -32,12 +32,12 @@ router.post(
         venue: venue,
         description: description,
         eventdate: eventdate,
+        picture:req.body.picture,
       });
 
       const event = await newEvent.save();
 
       res.json(event);
-      console.log(req.body);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
@@ -120,12 +120,12 @@ router.put(
       event.venue=venue;
       event.description=description;
       event.eventdate=eventdate;
+      event.picture=req.body.picture;
 
 
       await event.save();
 
       res.json(event);
-      console.log(req.body);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");
