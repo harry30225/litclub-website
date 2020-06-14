@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 import { deleteEvent } from '../../actions/event'
 
 const EventElement = (props) => {
-    const { deleteEvent, name, date, venue, description, eventdate, auth: { isAuthenticated }, id } = props
+    const { deleteEvent, name, date, venue, description, eventdate, picture,auth: { isAuthenticated }, id } = props
     return (
         <div className="main">
             <div className="card card-body mb-2">
                 <div className="row">
                     <div className="col-lg-5">
                         <div className="ha-pic">
-                            <img src="/img/recentEventPoster.jpg" alt="" />
+                            <img src={picture.data} alt="" />
                         </div>
                     </div>
                     <div className="col-lg-5">

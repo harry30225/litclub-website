@@ -19,7 +19,7 @@ export const getEvents = () => async (dispatch) => {
 };
 
 // add events
-export const addEvent = (name, venue, description, eventdate) => async (
+export const addEvent = (name, venue, description, eventdate,picture) => async (
   dispatch
 ) => {
   const config = {
@@ -27,7 +27,7 @@ export const addEvent = (name, venue, description, eventdate) => async (
       "Content-Type": "application/json",
     },
   };
-  const body = JSON.stringify({ name, venue, description, eventdate });
+  const body = JSON.stringify({ name, venue, description, eventdate,picture });
   try {
     const res = await axios.post(`/api/event/`, body, config);
 
@@ -62,7 +62,7 @@ export const deleteEvent = (id) => async dispatch => {
 };
 
 // edit event
-export const editEvent = (id,name, venue, description, eventdate) => async (
+export const editEvent = (id,name, venue, description, eventdate,picture) => async (
   dispatch
 ) => {
   const config = {
@@ -70,7 +70,7 @@ export const editEvent = (id,name, venue, description, eventdate) => async (
       "Content-Type": "application/json",
     },
   };
-  const body = JSON.stringify({ name, venue, description, eventdate });
+  const body = JSON.stringify({ name, venue, description, eventdate,picture });
   try {
     const res = await axios.put(`/api/event/edit/${id}`, body, config);
 
