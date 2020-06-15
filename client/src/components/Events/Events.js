@@ -13,7 +13,7 @@ const Events = ({ getEvents, event: { events, loading } }) => {
   }, [getEvents]);
 
   return !loading && (
-    <div>
+    <div className="container">
       <section className="breadcrumb-section">
         <div className="container">
           <div className="row">

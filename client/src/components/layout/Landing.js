@@ -3,31 +3,35 @@ import { Carousel } from 'react-bootstrap';
 const Landing = () => {
     return (
         <div>
-            <h3>Landing page</h3>
             <Carousel>
                 <Carousel.Item>
                     <img src="/img/slider.jpeg" alt="first slide" />
                     <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <div class="hero-text">
+                        <h2 class="display-4">First Slide</h2>
+                        <h4 >This is a description for the First slide.</h4>
+                    </div>                    
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img src="/img/slider.jpeg" alt="second slide" />
                     <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <div class="hero-text">
+                        <h2 class="display-4">Second Slide</h2>
+                        <h4 >This is a description for the Second slide.</h4>
+                    </div>                        
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img src="/img/slider.jpeg" alt="third slide" />
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <div class="hero-text">
+                        <h2 class="display-4">Third Slide</h2>
+                        <h4 >This is a description for the Third slide.</h4>
+                    </div>                         
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-            <h3>This is The Carousel</h3>
         </div>
     )
 };

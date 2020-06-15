@@ -13,7 +13,7 @@ const Blogs = ({ getBlogs, blog: { blogs, loading } }) => {
   }, [getBlogs]);
 
   return !loading && (
-    <div>
+    <div className="container">
       <section className="breadcrumb-section">
         <div className="container">
           <div className="row">

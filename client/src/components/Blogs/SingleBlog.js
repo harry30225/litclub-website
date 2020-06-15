@@ -14,11 +14,11 @@ const SingleBlog = ({ deleteBlog, getBlog, blog: { blog, loading }, match, auth:
 
   return !loading && blog && (
     <div className="main">
-      <section class="blog-hero-section set-bg" style={{ backgroundImage: "url('/img/blog/blog-details/blog-details-hero.jpg')" }}>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="bh-text">
+      <section className="blog-hero-section set-bg" style={{ backgroundImage: "url('/img/blog/blog-details/blog-details-hero.jpg')" }}>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="bh-text">
                 <h2>{blog.title}</h2>
                 <ul>
                   <li><span>By <strong>{blog.author}</strong></span></li>
