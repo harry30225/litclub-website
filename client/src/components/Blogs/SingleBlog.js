@@ -14,7 +14,7 @@ const SingleBlog = ({ deleteBlog, getBlog, blog: { blog, loading }, match, auth:
 
   return !loading && blog && (
     <div className="main">
-      <section className="blog-hero-section set-bg" style={{ backgroundImage: "url('/img/blog/blog-details/blog-details-hero.jpg')" }}>
+      <section className="blog-hero-section set_bg" style={{ backgroundImage: `url('${blog.picture.data}')` }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-12">

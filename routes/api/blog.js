@@ -34,6 +34,7 @@ router.post('/', [auth, [
                 title: req.body.title,
                 content: content,
                 author: author,
+                picture: req.body.picture,
             });
 
             const blog = await newBlog.save();
@@ -124,6 +125,7 @@ router.put(
             blog.content = content;
             blog.blogtag = blogtag;
             blog.author = author;
+            blog.picture = req.body.picture;
 
             await blog.save();
 
