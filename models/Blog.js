@@ -3,17 +3,23 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const BlogSchema = new Schema({
-    title: {
-        type: String,
-        required: true
+  blogtag: {
+    type: String,
   },
-    content: {
-        type: String,
+  title: {
+    type: String,
+    required: true
   },
-    date: {
-        type: Date,
-        default: Date.now
-  }
+  content: {
+    type: String,
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  author: {
+    type: String,
+  },
 });
 
 module.exports = Blog = mongoose.model('Blog', BlogSchema);

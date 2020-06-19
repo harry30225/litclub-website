@@ -4,24 +4,35 @@ import FormElement from "../layout/FormElement";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addEvent } from "../../actions/event";
+import FileBase64 from 'react-file-base64';
 
-const Dashboard = ({ addEvent }) => {
+const AddEvent = ({ addEvent }) => {
   const [formData, setFormData] = useState({
     name: "",
     venue: "",
     description: "",
     eventdate: "",
+    picture:{}
   });
 
-  const { name, venue, description, eventdate } = formData;
+  const { name, venue, description, eventdate ,picture} = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const onDone=(uploadimage)=>{
+    console.log(uploadimage);
+    setFormData({...formData,picture:{
+      name:"base-image-"+Date.now(),
+      data:uploadimage.base64.toString()
+    }});
+  };
+  
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    addEvent(name, venue, description, eventdate);
+    addEvent(name, venue, description, eventdate,picture);
   };
   return (
     <Fragment>
@@ -61,6 +72,11 @@ const Dashboard = ({ addEvent }) => {
               value={eventdate}
               onChange={(e) => onChange(e)}
             />
+            <FileBase64
+              multiple={ false }
+              onDone={ (uploadimage)=> onDone(uploadimage)}
+            />
+            {picture && <img src={picture.data}/>}
             <input
               type="submit"
               value="Add Event"
@@ -72,8 +88,8 @@ const Dashboard = ({ addEvent }) => {
     </Fragment>
   );
 };
-Dashboard.propTypes = {
+AddEvent.propTypes = {
   addEvent: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addEvent })(Dashboard);
+export default connect(null, { addEvent })(AddEvent);

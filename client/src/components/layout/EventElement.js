@@ -1,27 +1,60 @@
 import React from 'react';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { deleteEvent } from '../../actions/event'
 
 const EventElement = (props) => {
-    const {name,date,venue,description} = props
+    const { deleteEvent, name, date, venue, description, eventdate, picture,auth: { isAuthenticated }, id } = props
     return (
-        <div className="card mb-3">
-        <div className="card-header">
-            <h5>{name}
-            </h5>
+        <div className="main">
+            <div className="card card-body mb-2">
+                <div className="row">
+                    <div className="col-lg-5">
+                        <div className="ha-pic">
+                            <img src={picture.data} alt="" />
+                        </div>
+                    </div>
+                    <div className="col-lg-5">
+                        <div className="ha-text">
+                            <h2>{name}</h2>
+                            <p>{description}</p>
+                            <ul>
+                                <li><span className="icon_check"></span> {venue}</li>
+                                <li>
+                                    <span className="icon_check"></span>
+                                    <Moment parse="YYYY-MM-DD" format="YYYY/MM/DD" > {eventdate}
+                                    </Moment>
+                                </li>
+                            </ul>
+                            <Link to="#" className="ha-btn">Discover Now</Link>
+                        </div>
+                    </div>
+                    {isAuthenticated && (
+                        <div className="col-lg-2" >
+                            <button style={{ cursor: 'pointer', float: 'right', color: 'red' }} onClick={e => deleteEvent(id)} className="btn btn-light btn-lg">
+                                <i className="fa fa-trash" />
+                            </button>
+                            <Link style={{ cursor: 'pointer', float: 'right', color: 'black' }} to={`/admin/editevent/${id}`} className="btn btn-light btn-lg">
+                                <i className="fa fa-pencil" />
+                            </Link>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
-        <div className="card-body">
-            <h6 className="card-text">{venue}</h6>
-            <h6>
-            <Moment parse="YYYY-MM-DD" format="YYYY/MM/DD"> {date}
-            </Moment></h6> 
-        </div>
-        <div className="card-body">
-            <p className="card-text"> {description}</p>
-        </div>
-    </div>
     )
 };
 
 
-  
-export default EventElement;
+EventElement.propTypes = {
+    auth: PropTypes.object.isRequired,
+    deleteEvent: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps, { deleteEvent })(EventElement);
