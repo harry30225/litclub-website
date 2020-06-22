@@ -1,24 +1,26 @@
 const express = require('express');
 const connectDB = require('./config/db');
 
-const admin=require('./routes/api/admin');
-const event=require('./routes/api/event');
-const blog=require('./routes/api/blog');
+const admin = require('./routes/api/admin');
+const event = require('./routes/api/event');
+const blog = require('./routes/api/blog');
+const imageslider = require('./routes/api/imageslider');
 const app = express();
 
 connectDB();
 
 // init middleware
-app.use(express.json({limit: '1mb',extended:false}));
-app.use(express.urlencoded({limit: '1mb'}));
+app.use(express.json({ limit: '1mb', extended: false }));
+app.use(express.urlencoded({ limit: '1mb' }));
 
-app.get('/',(req,res)=> res.send('API RUNNING'));
+app.get('/', (req, res) => res.send('API RUNNING'));
 
 
 // define routes
-app.use('/api/admin',admin);
-app.use('/api/event',event);
-app.use('/api/blog',blog);
+app.use('/api/admin', admin);
+app.use('/api/event', event);
+app.use('/api/blog', blog);
+app.use('/api/imageslider', imageslider);
 
 const PORT = process.env.PORT || 5000;
 
