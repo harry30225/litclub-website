@@ -19,3 +19,7 @@ export const BLOGS_ERROR = 'BLOGS_ERROR';
 export const ADD_BLOG = 'ADD_BLOG';
 export const EDIT_BLOG = 'EDIT_BLOG';
 export const DELETE_BLOG = 'DELETE_BLOG';
+
+export const GET_IMAGES = 'GET_IMAGES';
+export const ADD_IMAGE = 'ADD_IMAGE';
+export const IMAGES_ERROR = 'IMAGES_ERROR';

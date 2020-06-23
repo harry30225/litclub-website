@@ -3,34 +3,36 @@ import FormElement from "../layout/FormElement";
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-// import { addEvent } from "../../actions/event";
+import { addImage } from "../../actions/image";
 import FileBase64 from 'react-file-base64';
 
-const AddImageslider = ({  }) => {
+const AddImageslider = ({ addImage }) => {
   const [formData, setFormData] = useState({
     title: "",
     caption: "",
-    picture:{}
+    picture: {}
   });
 
-  const { title, caption, picture} = formData;
+  const { title, caption, picture } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onDone=(uploadimage)=>{
+  const onDone = (uploadimage) => {
     console.log(uploadimage);
-    setFormData({...formData,picture:{
-      name:"base-image-"+Date.now(),
-      data:uploadimage.base64.toString()
-    }});
+    setFormData({
+      ...formData, picture: {
+        name: "base-image-" + Date.now(),
+        data: uploadimage.base64.toString()
+      }
+    });
   };
-  
+
 
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    // addEvent(name, venue, description, eventdate,picture);
+    addImage(title, caption, picture);
   };
   return (
     <Fragment>
@@ -55,10 +57,10 @@ const AddImageslider = ({  }) => {
               onChange={(e) => onChange(e)}
             />
             <FileBase64
-              multiple={ false }
-              onDone={ (uploadimage)=> onDone(uploadimage)}
+              multiple={false}
+              onDone={(uploadimage) => onDone(uploadimage)}
             />
-            {picture && <img src={picture.data}/>}
+            {picture && <img src={picture.data} />}
             <input
               type="submit"
               value="Add Image"
@@ -71,7 +73,7 @@ const AddImageslider = ({  }) => {
   );
 };
 AddImageslider.propTypes = {
-//   addEvent: PropTypes.func.isRequired,
+  addImage: PropTypes.func.isRequired,
 };
 
-export default connect(null, {  })(AddImageslider);
+export default connect(null, { addImage })(AddImageslider);
