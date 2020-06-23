@@ -14,6 +14,7 @@ import AddEvent from './components/admin/AddEvent';
 import EditEvent from './components/admin/EditEvent';
 import EditBlog from './components/admin/EditBlog';
 import AddBlog from './components/admin/AddBlog';
+import AddImageslider from './components/admin/AddImageslider';
 
 
 
@@ -51,6 +52,7 @@ const App = () => {
             <PrivateRoute exact path="/admin/editevent/:id" component={EditEvent} />
             <PrivateRoute exact path="/admin/editblog/:id" component={EditBlog} />
             <PrivateRoute exact path="/admin/addblog" component={AddBlog} />
+            <PrivateRoute exact path="/admin/addimage" component={AddImageslider} />
           </Switch>
           <Footer />
         </Fragment>

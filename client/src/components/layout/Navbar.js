@@ -23,6 +23,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                                 <Fragment>
                                     <li><Link to='/admin/addevent'>Add Event</Link></li>
                                     <li><Link to='/admin/addblog'>Add Blog</Link></li>
+                                    <li><Link to='/admin/addimage'>Add Image</Link></li>
                                     <li><Link onClick={logout} to='/'>Logout</Link></li>
                                 </Fragment>
                                 )
