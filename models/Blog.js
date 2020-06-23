@@ -20,6 +20,14 @@ const BlogSchema = new Schema({
   author: {
     type: String,
   },
+  picture: {
+    name: {
+      type: String
+    },
+    data: {
+      type: String
+    }
+  }
 });
 
 module.exports = Blog = mongoose.model('Blog', BlogSchema);

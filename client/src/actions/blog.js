@@ -19,7 +19,7 @@ export const getBlogs = () => async (dispatch) => {
 };
 
 // add blogs
-export const addBlog = (blogtag, title, content, author) => async (
+export const addBlog = (blogtag, title, content, author, picture) => async (
   dispatch
 ) => {
   const config = {
@@ -27,7 +27,7 @@ export const addBlog = (blogtag, title, content, author) => async (
       "Content-Type": "application/json",
     },
   };
-  const body = JSON.stringify({ blogtag, title, content, author });
+  const body = JSON.stringify({ blogtag, title, content, author, picture });
   try {
     const res = await axios.post(`/api/blog/`, body, config);
 
@@ -61,7 +61,7 @@ export const getBlog = (id) => async dispatch => {
 };
 
 // edit blog
-export const editBlog = (id, blogtag, title, content, author) => async (
+export const editBlog = (id, blogtag, title, content, author, picture) => async (
   dispatch
 ) => {
   const config = {
@@ -69,7 +69,7 @@ export const editBlog = (id, blogtag, title, content, author) => async (
       "Content-Type": "application/json",
     },
   };
-  const body = JSON.stringify({ blogtag, title, content, author });
+  const body = JSON.stringify({ blogtag, title, content, author, picture });
   try {
     const res = await axios.put(`/api/blog/edit/${id}`, body, config);
 

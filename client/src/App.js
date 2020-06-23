@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
 import AdminLogin from './components/auth/AdminLogin';
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -40,17 +41,18 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
-            <Switch>
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/admin/login" component={AdminLogin} />
-              <Route exact path="/events" component={Events} />
-              <Route exact path="/blogs" component={Blogs} />
-              <Route exact path="/blog/:id" component={SingleBlog} />
-              <PrivateRoute exact path="/admin/addevent" component={AddEvent} />
-              <PrivateRoute exact path="/admin/editevent/:id" component={EditEvent} />
-              <PrivateRoute exact path="/admin/editblog/:id" component={EditBlog} />
-              <PrivateRoute exact path="/admin/addblog" component={AddBlog} />
-            </Switch>
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/admin/login" component={AdminLogin} />
+            <Route exact path="/events" component={Events} />
+            <Route exact path="/blogs" component={Blogs} />
+            <Route exact path="/blog/:id" component={SingleBlog} />
+            <PrivateRoute exact path="/admin/addevent" component={AddEvent} />
+            <PrivateRoute exact path="/admin/editevent/:id" component={EditEvent} />
+            <PrivateRoute exact path="/admin/editblog/:id" component={EditBlog} />
+            <PrivateRoute exact path="/admin/addblog" component={AddBlog} />
+          </Switch>
+          <Footer />
         </Fragment>
       </Router>
     </Provider>

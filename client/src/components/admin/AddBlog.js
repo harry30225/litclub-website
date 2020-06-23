@@ -4,6 +4,7 @@ import FormElement from "../layout/FormElement";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addBlog } from "../../actions/blog";
+import FileBase64 from 'react-file-base64';
 
 const AddBlog = ({ addBlog }) => {
   const [formData, setFormData] = useState({
@@ -11,17 +12,28 @@ const AddBlog = ({ addBlog }) => {
     title: "",
     content: "",
     author: "",
+    picture: {}
   });
 
-  const { blogtag, title, content, author } = formData;
+  const { blogtag, title, content, author, picture } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const onDone = (uploadimage) => {
+    console.log(uploadimage);
+    setFormData({
+      ...formData, picture: {
+        name: "base-image-" + Date.now(),
+        data: uploadimage.base64.toString()
+      }
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    addBlog(blogtag, title, content, author);
+    addBlog(blogtag, title, content, author, picture);
   };
   return (
     <Fragment>
@@ -61,6 +73,11 @@ const AddBlog = ({ addBlog }) => {
               value={author}
               onChange={(e) => onChange(e)}
             />
+            <FileBase64
+              multiple={false}
+              onDone={(uploadimage) => onDone(uploadimage)}
+            />
+            {picture && <img src={picture.data} />}
             <input
               type="submit"
               value="Add Blog"

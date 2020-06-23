@@ -4,8 +4,9 @@ import FormElement from "../layout/FormElement";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { editBlog } from "../../actions/blog";
+import FileBase64 from 'react-file-base64';
 
-const EditBlog= ({ match,editBlog }) => {
+const EditBlog = ({ match, editBlog }) => {
   const [formData, setFormData] = useState({
     blogtag: "",
     title: "",
@@ -13,15 +14,25 @@ const EditBlog= ({ match,editBlog }) => {
     author: "",
   });
 
-  const { blogtag, title, content, author } = formData;
+  const { blogtag, title, content, author, picture } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const onDone = (uploadimage) => {
+    console.log(uploadimage);
+    setFormData({
+      ...formData, picture: {
+        name: "base-image-" + Date.now(),
+        data: uploadimage.base64.toString()
+      }
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    editBlog(match.params.id,blogtag, title, content, author);
+    editBlog(match.params.id, blogtag, title, content, author, picture);
   };
   return (
     <Fragment>
@@ -61,6 +72,11 @@ const EditBlog= ({ match,editBlog }) => {
               value={author}
               onChange={(e) => onChange(e)}
             />
+            <FileBase64
+              multiple={false}
+              onDone={(uploadimage) => onDone(uploadimage)}
+            />
+            {picture && <img src={picture.data} />}
             <input
               type="submit"
               value="Edit Blog"
