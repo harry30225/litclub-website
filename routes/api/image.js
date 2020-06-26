@@ -5,10 +5,10 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
-const Imageslider = require('../../models/Imageslider');
+const Image = require('../../models/Image');
 
-// @route    POST api/imageslider
-// @desc     POST imageslider by admin
+// @route    POST api/image
+// @desc     POST image by admin
 // @access   Private
 
 router.post(
@@ -28,15 +28,15 @@ router.post(
             caption = "";
             if (req.body.caption != null) caption = req.body.caption;
 
-            const newImageslider = new Imageslider({
+            const newImage = new Image({
                 picture: picture,
                 title: title,
                 caption: caption,
             });
 
-            const imageslider = await newImageslider.save();
+            const image = await newImage.save();
 
-            res.json(imageslider);
+            res.json(image);
         } catch (err) {
             console.error(err.message);
             res.status(500).send("Server Error");
@@ -45,12 +45,12 @@ router.post(
 );
 router.get("/", async (req, res) => {
     try {
-        const imagesliders = await Imageslider.find().sort({ date: -1 });
-        const reqimageslider = [];
-        reqimageslider.push(imagesliders[imagesliders.length - 1]);
-        reqimageslider.push(imagesliders[imagesliders.length - 2]);
-        reqimageslider.push(imagesliders[imagesliders.length - 3]);
-        res.json(reqimageslider);
+        const images = await Image.find().sort({ date: -1 });
+        const reqimages = [];
+        reqimages.push(images[images.length - 1]);
+        reqimages.push(images[images.length - 2]);
+        reqimages.push(images[images.length - 3]);
+        res.json(reqimages);
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");

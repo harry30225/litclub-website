@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Schema
-const ImagesliderSchema = new Schema({
+const ImageSchema = new Schema({
     picture: {
         name: {
             type: String
@@ -19,4 +19,4 @@ const ImagesliderSchema = new Schema({
     },
 });
 
-module.exports = Imageslider = mongoose.model('Imageslider', ImagesliderSchema);
+module.exports = Image = mongoose.model('Image', ImageSchema);
