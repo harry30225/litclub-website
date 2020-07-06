@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_BLOG, GET_BLOGS, BLOGS_ERROR, ADD_BLOG, GET_BLOG, EDIT_BLOG } from "./types";
+import { DELETE_BLOG, GET_BLOGS, BLOGS_ERROR, ADD_BLOG, GET_BLOG, EDIT_BLOG, GET_THREEBLOGS } from "./types";
 
 // Get blogs
 export const getBlogs = () => async (dispatch) => {
@@ -8,6 +8,23 @@ export const getBlogs = () => async (dispatch) => {
 
     dispatch({
       type: GET_BLOGS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: BLOGS_ERROR,
+      payload: { msg: "error" },
+    });
+  }
+};
+
+// Get threeblogs
+export const getThreeblogs = () => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/blog/three`);
+
+    dispatch({
+      type: GET_THREEBLOGS,
       payload: res.data,
     });
   } catch (err) {

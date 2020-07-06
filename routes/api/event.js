@@ -59,6 +59,22 @@ router.get("/", async (req, res) => {
   }
 });
 
+// @route    GET api/event/latest
+// @desc     GET event by admin
+// @access   public
+
+router.get('/latest',
+  async (req, res) => {
+    try {
+      const events = await Event.find().sort({ date: -1 });
+      res.json(events[0]);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  });
+
+
 // @route    delete api/event/delete/:id
 // @desc     delete event by admin
 // @access   private

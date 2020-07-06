@@ -65,6 +65,29 @@ router.get('/',
         }
 
     });
+
+// @route    GET api/blog/three
+// @desc     get blog by anybody
+// @access   Public
+
+router.get('/three',
+    async (req, res) => {
+
+        try {
+            const blogs = await Blog.find().sort({ date: -1 });
+            const threeblogs = [];
+            threeblogs.push(blogs[0]);
+            threeblogs.push(blogs[1]);
+            threeblogs.push(blogs[2]);
+            res.json(threeblogs);
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+
+    });
+
+
 // @route    delete api/blog/delete/:id
 // @desc     delete blog by admin
 // @access   private

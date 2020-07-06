@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_EVENTS, EVENTS_ERROR, ADD_EVENT,DELETE_EVENT,EDIT_EVENT,GET_EVENT} from "./types";
+import { GET_EVENTS, EVENTS_ERROR, ADD_EVENT, DELETE_EVENT, EDIT_EVENT, GET_EVENT, GET_LATESTEVENT } from "./types";
 
 // Get events
 export const getEvents = () => async (dispatch) => {
@@ -18,8 +18,25 @@ export const getEvents = () => async (dispatch) => {
   }
 };
 
+// Get Latestevents
+export const getLatestevent = () => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/event/latest`);
+
+    dispatch({
+      type: GET_LATESTEVENT,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: EVENTS_ERROR,
+      payload: { msg: "error" },
+    });
+  }
+};
+
 // add events
-export const addEvent = (name, venue, description, eventdate,picture) => async (
+export const addEvent = (name, venue, description, eventdate, picture) => async (
   dispatch
 ) => {
   const config = {
@@ -27,7 +44,7 @@ export const addEvent = (name, venue, description, eventdate,picture) => async (
       "Content-Type": "application/json",
     },
   };
-  const body = JSON.stringify({ name, venue, description, eventdate,picture });
+  const body = JSON.stringify({ name, venue, description, eventdate, picture });
   try {
     const res = await axios.post(`/api/event/`, body, config);
 
@@ -62,7 +79,7 @@ export const deleteEvent = (id) => async dispatch => {
 };
 
 // edit event
-export const editEvent = (id,name, venue, description, eventdate,picture) => async (
+export const editEvent = (id, name, venue, description, eventdate, picture) => async (
   dispatch
 ) => {
   const config = {
@@ -70,7 +87,7 @@ export const editEvent = (id,name, venue, description, eventdate,picture) => asy
       "Content-Type": "application/json",
     },
   };
-  const body = JSON.stringify({ name, venue, description, eventdate,picture });
+  const body = JSON.stringify({ name, venue, description, eventdate, picture });
   try {
     const res = await axios.put(`/api/event/edit/${id}`, body, config);
 

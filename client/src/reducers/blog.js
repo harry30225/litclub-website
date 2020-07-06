@@ -3,6 +3,7 @@ import {
     BLOGS_ERROR,
     ADD_BLOG,
     GET_BLOG,
+    GET_THREEBLOGS,
     DELETE_BLOG,
     EDIT_BLOG
 } from '../actions/types';
@@ -19,6 +20,12 @@ export default function (state = initialState, action) {
 
     switch (type) {
         case GET_BLOGS:
+            return {
+                ...state,
+                blogs: payload,
+                loading: false
+            };
+        case GET_THREEBLOGS:
             return {
                 ...state,
                 blogs: payload,

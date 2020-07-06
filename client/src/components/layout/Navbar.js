@@ -1,4 +1,4 @@
-import React,{Fragment} from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -26,9 +26,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                                     <li><Link to='/admin/addimage'>Add Image</Link></li>
                                     <li><Link onClick={logout} to='/'>Logout</Link></li>
                                 </Fragment>
-                                )
+                            )
                             }
-                            
+                            <Link to="#" className="primary-btn top-btn"><i class="fa fa-ticket"></i> Ticket</Link>
                         </ul>
                     </nav>
                 </div>
