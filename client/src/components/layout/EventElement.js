@@ -3,10 +3,10 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteEvent } from '../../actions/event'
+import { deleteEvent } from '../../actions/event';
 
 const EventElement = (props) => {
-    const { deleteEvent, name, date, venue, description, eventdate, picture,auth: { isAuthenticated }, id } = props
+    const { deleteEvent, name, date, venue, description, eventdate, picture, auth: { isAuthenticated }, id } = props
     return (
         <div className="main">
             <div className="card card-body mb-2">
@@ -28,7 +28,7 @@ const EventElement = (props) => {
                                     </Moment>
                                 </li>
                             </ul>
-                            <Link to="#" className="ha-btn">Discover Now</Link>
+                            <Link to={`/event/${id}`} className="primary-btn top-btn"><i class="fa fa-ticket"></i> Ticket</Link>
                         </div>
                     </div>
                     {isAuthenticated && (

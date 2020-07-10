@@ -28,7 +28,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                                 </Fragment>
                             )
                             }
-                            <Link to="#" className="primary-btn top-btn"><i class="fa fa-ticket"></i> Ticket</Link>
                         </ul>
                     </nav>
                 </div>
