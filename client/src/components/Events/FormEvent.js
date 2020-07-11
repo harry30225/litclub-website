@@ -27,7 +27,7 @@ const FormEvent = ({ getEvent, event: { event, loading }, match }) => {
                     </div>
                 </div>
             </section>
-            <iframe seamless="seamless" scrolling="no" src="https://forms.office.com/Pages/ResponsePage.aspx?id=vDsaA3zPK06W7IZ1VVQKHC71NbPjJjBJuANLho3d4v5UMzFITlVTTjJNUUFVT01CTU03V09PU1BOUy4u" style={{ overflow: "hidden" }} allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+            <iframe seamless="seamless" scrolling="no" src={event.formurl} style={{ overflow: "hidden" }} allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
         </div >
     )
 }

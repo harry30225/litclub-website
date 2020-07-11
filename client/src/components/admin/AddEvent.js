@@ -12,27 +12,30 @@ const AddEvent = ({ addEvent }) => {
     venue: "",
     description: "",
     eventdate: "",
-    picture:{}
+    formurl: "",
+    picture: {}
   });
 
-  const { name, venue, description, eventdate ,picture} = formData;
+  const { name, venue, description, eventdate, formurl, picture } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onDone=(uploadimage)=>{
+  const onDone = (uploadimage) => {
     console.log(uploadimage);
-    setFormData({...formData,picture:{
-      name:"base-image-"+Date.now(),
-      data:uploadimage.base64.toString()
-    }});
+    setFormData({
+      ...formData, picture: {
+        name: "base-image-" + Date.now(),
+        data: uploadimage.base64.toString()
+      }
+    });
   };
-  
+
 
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    addEvent(name, venue, description, eventdate,picture);
+    addEvent(name, venue, description, eventdate, formurl, picture);
   };
   return (
     <Fragment>
@@ -72,11 +75,19 @@ const AddEvent = ({ addEvent }) => {
               value={eventdate}
               onChange={(e) => onChange(e)}
             />
-            <FileBase64
-              multiple={ false }
-              onDone={ (uploadimage)=> onDone(uploadimage)}
+            <FormElement
+              label="Formurl"
+              name="formurl"
+              placeholder="Enter Formurl"
+              type="text"
+              value={formurl}
+              onChange={(e) => onChange(e)}
             />
-            {picture && <img src={picture.data}/>}
+            <FileBase64
+              multiple={false}
+              onDone={(uploadimage) => onDone(uploadimage)}
+            />
+            {picture && <img src={picture.data} />}
             <input
               type="submit"
               value="Add Event"

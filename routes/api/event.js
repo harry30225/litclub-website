@@ -26,12 +26,15 @@ router.post(
       if (req.body.description != null) description = req.body.description;
       eventdate = "";
       if (req.body.eventdate != null) eventdate = req.body.eventdate;
+      formurl = "";
+      if (req.body.formurl != null) formurl = req.body.formurl;
 
       const newEvent = new Event({
         name: req.body.name,
         venue: venue,
         description: description,
         eventdate: eventdate,
+        formurl: formurl,
         picture: req.body.picture,
       });
 
@@ -66,7 +69,7 @@ router.get("/", async (req, res) => {
 router.get('/latest',
   async (req, res) => {
     try {
-      const events = await Event.find().sort({ date: -1 });
+      const events = await Event.find().sort({ eventdate: -1 });
       res.json(events[0]);
     } catch (err) {
       console.error(err.message);
@@ -131,11 +134,14 @@ router.put(
       if (req.body.description != null) description = req.body.description;
       eventdate = "";
       if (req.body.eventdate != null) eventdate = req.body.eventdate;
+      formurl = "";
+      if (req.body.formurl != null) formurl = req.body.formurl;
 
       event.name = req.body.name;
       event.venue = venue;
       event.description = description;
       event.eventdate = eventdate;
+      event.formurl = formurl;
       event.picture = req.body.picture;
 
 

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { deleteEvent } from '../../actions/event';
 
 const EventElement = (props) => {
-    const { deleteEvent, name, date, venue, description, eventdate, picture, auth: { isAuthenticated }, id } = props
+    const { deleteEvent, name, date, venue, description, formurl, eventdate, picture, auth: { isAuthenticated }, id } = props
     return (
         <div className="main">
             <div className="card card-body mb-2">

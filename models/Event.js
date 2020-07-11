@@ -27,7 +27,10 @@ const EventSchema = new Schema({
     data: {
       type: String
     }
-  }
+  },
+  formurl: {
+    type: String
+  },
 });
 
 module.exports = Event = mongoose.model("Event", EventSchema);
