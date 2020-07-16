@@ -13,7 +13,7 @@ const Image = require('../../models/Image');
 
 router.post(
     "/",
-    [auth],
+    [auth, [check("picture", "picture is required").not().isEmpty()]],
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -21,15 +21,13 @@ router.post(
         }
 
         try {
-            picture = {};
-            if (req.body.picture != null) picture = req.body.picture;
             title = "";
             if (req.body.title != null) title = req.body.title;
             caption = "";
             if (req.body.caption != null) caption = req.body.caption;
 
             const newImage = new Image({
-                picture: picture,
+                picture: req.body.picture,
                 title: title,
                 caption: caption,
             });

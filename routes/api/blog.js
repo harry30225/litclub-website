@@ -28,6 +28,8 @@ router.post('/', [auth, [
             if (req.body.blogtag != null) blogtag = req.body.blogtag;
             author = "";
             if (req.body.author != null) author = req.body.author;
+            picture = {};
+            if (req.body.picture != null) picture = req.body.picture;
 
             const newBlog = new Blog({
                 blogtag: blogtag,
@@ -143,6 +145,8 @@ router.put(
             if (req.body.blogtag != null) blogtag = req.body.blogtag;
             author = "";
             if (req.body.author != null) author = req.body.author;
+            picture = {};
+            if (req.body.picture != null) picture = req.body.picture;
 
             blog.title = req.body.title;
             blog.content = content;

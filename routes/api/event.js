@@ -28,6 +28,8 @@ router.post(
       if (req.body.eventdate != null) eventdate = req.body.eventdate;
       formurl = "";
       if (req.body.formurl != null) formurl = req.body.formurl;
+      picture = {};
+      if (req.body.picture != null) picture = req.body.picture;
 
       const newEvent = new Event({
         name: req.body.name,
@@ -136,6 +138,8 @@ router.put(
       if (req.body.eventdate != null) eventdate = req.body.eventdate;
       formurl = "";
       if (req.body.formurl != null) formurl = req.body.formurl;
+      picture = {};
+      if (req.body.picture != null) picture = req.body.picture;
 
       event.name = req.body.name;
       event.venue = venue;

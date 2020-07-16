@@ -66,6 +66,7 @@ const EditEvent = ({ getEvent, editEvent, match, event: { event, loading } }) =>
               placeholder="Enter Title"
               type="text"
               value={name}
+              required={true}
               onChange={(e) => onChange(e)}
             />
             <FormElement
@@ -74,6 +75,7 @@ const EditEvent = ({ getEvent, editEvent, match, event: { event, loading } }) =>
               placeholder="Enter Venue"
               type="text"
               value={venue}
+              required={false}
               onChange={(e) => onChange(e)}
             />
             <FormElement
@@ -82,6 +84,7 @@ const EditEvent = ({ getEvent, editEvent, match, event: { event, loading } }) =>
               placeholder="Enter Description"
               type="text"
               value={description}
+              required={false}
               onChange={(e) => onChange(e)}
             />
             <FormElement
@@ -90,6 +93,7 @@ const EditEvent = ({ getEvent, editEvent, match, event: { event, loading } }) =>
               placeholder="Enter Eventdate"
               type="date"
               value={eventdate}
+              required={false}
               onChange={(e) => onChange(e)}
             />
             <FormElement
@@ -98,6 +102,7 @@ const EditEvent = ({ getEvent, editEvent, match, event: { event, loading } }) =>
               placeholder="Enter Formurl"
               type="text"
               value={formurl}
+              required={false}
               onChange={(e) => onChange(e)}
             />
             <FileBase64

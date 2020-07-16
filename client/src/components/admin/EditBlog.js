@@ -46,6 +46,7 @@ const EditBlog = ({ match, editBlog }) => {
               placeholder="Enter Blog Tag"
               type="text"
               value={blogtag}
+              required={false}
               onChange={(e) => onChange(e)}
             />
             <FormElement
@@ -54,6 +55,7 @@ const EditBlog = ({ match, editBlog }) => {
               placeholder="Enter Title"
               type="text"
               value={title}
+              required={true}
               onChange={(e) => onChange(e)}
             />
             <FormElement
@@ -62,6 +64,7 @@ const EditBlog = ({ match, editBlog }) => {
               placeholder="Enter Content"
               type="text"
               value={content}
+              required={false}
               onChange={(e) => onChange(e)}
             />
             <FormElement
@@ -70,6 +73,7 @@ const EditBlog = ({ match, editBlog }) => {
               placeholder="Enter Author"
               type="text"
               value={author}
+              required={false}
               onChange={(e) => onChange(e)}
             />
             <FileBase64

@@ -46,6 +46,7 @@ const AddImageslider = ({ addImage }) => {
               placeholder="Enter Title"
               type="text"
               value={title}
+              required={false}
               onChange={(e) => onChange(e)}
             />
             <FormElement
@@ -54,6 +55,7 @@ const AddImageslider = ({ addImage }) => {
               placeholder="Enter Caption"
               type="text"
               value={caption}
+              required={false}
               onChange={(e) => onChange(e)}
             />
             <FileBase64
