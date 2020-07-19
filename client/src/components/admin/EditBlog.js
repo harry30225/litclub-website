@@ -1,18 +1,33 @@
-import React, { useState, Fragment } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import FormElement from "../layout/FormElement";
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { editBlog } from "../../actions/blog";
+import { editBlog, getBlog } from "../../actions/blog";
 import FileBase64 from 'react-file-base64';
 
-const EditBlog = ({ match, editBlog }) => {
+const EditBlog = ({ getBlog, editBlog, match, blog: { blog, loading } }) => {
+  useEffect(() => {
+    getBlog(match.params.id);
+    if (!loading && blog) {
+
+      setFormData({
+        blogtag: blog.blogtag,
+        title: blog.title,
+        content: blog.content,
+        author: blog.author,
+        picture: blog.picture
+      })
+    }
+  }, [getBlog, loading, blog && blog._id]);
+
   const [formData, setFormData] = useState({
     blogtag: "",
     title: "",
     content: "",
     author: "",
   });
+
 
   const { blogtag, title, content, author, picture } = formData;
 
@@ -94,6 +109,10 @@ const EditBlog = ({ match, editBlog }) => {
 };
 EditBlog.propTypes = {
   editBlog: PropTypes.func.isRequired,
+  getBlog: PropTypes.func.isRequired,
 };
 
-export default connect(null, { editBlog })(EditBlog);
+const mapStateToProps = state => ({
+  blog: state.blog,
+});
+export default connect(mapStateToProps, { editBlog, getBlog })(EditBlog);
